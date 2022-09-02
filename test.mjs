@@ -1,6 +1,6 @@
 import test from 'brittle'
 
-import { cnt } from './index.js'
+import { cnt } from './browser.js'
 
 test('cnt', (t) => {
   t.test('uint8array', (t) => {

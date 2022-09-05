@@ -3,7 +3,7 @@
 Universal wrapper for https://github.com/holepunchto/libsimdle with a JavaScript fallback.
 
 ```sh
-npm install simdle-universal
+npm install simdle-universal simdle-native
 ```
 
 ## Usage

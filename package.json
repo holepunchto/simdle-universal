@@ -4,14 +4,14 @@
   "description": "Universal wrapper for libsimdle with a JavaScript fallback",
   "main": "index.js",
   "files": [
-    "browser.js",
+    "fallback.js",
     "index.js",
     "scalar.js",
     "native/index.js",
     "native/prebuilds"
   ],
   "browser": {
-    "./index.js": "./browser.js"
+    "./index.js": "./fallback.js"
   },
   "scripts": {
     "test": "standard && brittle test.mjs",

@@ -23,7 +23,7 @@ test('cnt', async (t) => {
   })
 
   await t.test('non-simd', async (t) => {
-    const { cnt } = await import('./browser.js')
+    const { cnt } = await import('./fallback.js')
 
     const result = new Uint32Array(2048)
 

@@ -1,5 +1,5 @@
 try {
-  module.exports = require('simd-native')
+  module.exports = require('simdle-native')
 } catch {
   module.exports = require('./browser')
 }

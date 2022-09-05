@@ -1,7 +1,7 @@
 {
-  "name": "simd-universal",
+  "name": "simdle-universal",
   "version": "1.0.0",
-  "description": "Universal wrapper for libsimd with a JavaScript fallback",
+  "description": "Universal wrapper for libsimdle with a JavaScript fallback",
   "main": "index.js",
   "files": [
     "browser.js",
@@ -16,17 +16,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/holepunchto/simd-universal.git"
+    "url": "git+https://github.com/holepunchto/simdle-universal.git"
   },
   "author": "Kasper Isager Dalsgarð <kasper@funktionel.co>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/holepunchto/simd-universal/issues"
+    "url": "https://github.com/holepunchto/simdle-universal/issues"
   },
-  "homepage": "https://github.com/holepunchto/simd-universal#readme",
+  "homepage": "https://github.com/holepunchto/simdle-universal#readme",
   "dependencies": {
     "b4a": "^1.6.0",
-    "simd-native": "^1.0.0"
+    "simdle-native": "^1.0.0"
   },
   "devDependencies": {
     "brittle": "^3.1.0",

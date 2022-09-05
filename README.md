@@ -1,15 +1,15 @@
-# simd-universal
+# simdle-universal
 
-Universal wrapper for https://github.com/holepunchto/libsimd with a JavaScript fallback.
+Universal wrapper for https://github.com/holepunchto/libsimdle with a JavaScript fallback.
 
 ```sh
-npm install simd-universal
+npm install simdle-universal
 ```
 
 ## Usage
 
 ```js
-const { cnt } = require('simd-universal')
+const { cnt } = require('simdle-universal')
 
 cnt(Buffer.alloc(16, 0xff))
 // <Buffer 08 08 08 08 08 08 08 08 08 08 08 08 08 08 08 08>

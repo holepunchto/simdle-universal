@@ -1,6 +1,6 @@
 {
   "name": "simdle-universal",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Universal wrapper for libsimdle with a JavaScript fallback",
   "main": "index.js",
   "files": [

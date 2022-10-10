@@ -67,6 +67,32 @@ function reduce (u8, u16 = u8, u32 = u16) {
   }
 }
 
+exports.allo = function allo (buf) {
+  if (buf.byteLength % 16 !== 0) {
+    throw new Error('Buffer length must be a multiple of 16')
+  }
+
+  const m = 2 ** (buf.BYTES_PER_ELEMENT * 8) - 1
+
+  for (let i = 0, n = buf.length; i < n; i++) {
+    if (buf[i] !== m) return false
+  }
+
+  return true
+}
+
+exports.allz = function allz (buf) {
+  if (buf.byteLength % 16 !== 0) {
+    throw new Error('Buffer length must be a multiple of 16')
+  }
+
+  for (let i = 0, n = buf.length; i < n; i++) {
+    if (buf[i] !== 0) return false
+  }
+
+  return true
+}
+
 exports.and = binary(
   (a, b, result) => {
     for (let i = 0, n = result.length; i < n; i++) {

@@ -25,7 +25,9 @@
   },
   "homepage": "https://github.com/holepunchto/simdle-universal#readme",
   "dependencies": {
-    "b4a": "^1.6.0",
+    "b4a": "^1.6.0"
+  },
+  "optionalDependencies": {
     "simdle-native": "^1.1.1"
   },
   "devDependencies": {

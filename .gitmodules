@@ -1,4 +1,0 @@
-[submodule "native"]
-	path = native
-	url = git@github.com:holepunchto/simdle-native.git
-	shallow = true

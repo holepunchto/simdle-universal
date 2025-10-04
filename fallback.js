@@ -1,7 +1,7 @@
 const b4a = require('b4a')
 const scalar = require('./scalar')
 
-function view (buf, n) {
+function view(buf, n) {
   if (n === buf.BYTES_PER_ELEMENT) return buf
 
   let TypedArray
@@ -13,8 +13,8 @@ function view (buf, n) {
   return new TypedArray(buf.buffer, buf.byteOffset, buf.byteLength / n)
 }
 
-function unary (u8, u16 = u8, u32 = u16) {
-  return function unary (buf, result = b4a.allocUnsafe(buf.byteLength)) {
+function unary(u8, u16 = u8, u32 = u16) {
+  return function unary(buf, result = b4a.allocUnsafe(buf.byteLength)) {
     if (buf.byteLength % 16 !== 0) {
       throw new Error('Buffer length must be a multiple of 16')
     }
@@ -33,8 +33,8 @@ function unary (u8, u16 = u8, u32 = u16) {
   }
 }
 
-function binary (u8, u16 = u8, u32 = u16) {
-  return function binary (a, b, result = b4a.allocUnsafe(a.byteLength)) {
+function binary(u8, u16 = u8, u32 = u16) {
+  return function binary(a, b, result = b4a.allocUnsafe(a.byteLength)) {
     if (a.byteLength % 16 !== 0) {
       throw new Error('Buffer length must be a multiple of 16')
     }
@@ -53,8 +53,8 @@ function binary (u8, u16 = u8, u32 = u16) {
   }
 }
 
-function reduce (u8, u16 = u8, u32 = u16) {
-  return function reduce (buf) {
+function reduce(u8, u16 = u8, u32 = u16) {
+  return function reduce(buf) {
     if (buf.byteLength % 16 !== 0) {
       throw new Error('Buffer length must be a multiple of 16')
     }
@@ -67,7 +67,7 @@ function reduce (u8, u16 = u8, u32 = u16) {
   }
 }
 
-exports.allo = function allo (buf) {
+exports.allo = function allo(buf) {
   if (buf.byteLength % 16 !== 0) {
     throw new Error('Buffer length must be a multiple of 16')
   }
@@ -81,7 +81,7 @@ exports.allo = function allo (buf) {
   return true
 }
 
-exports.allz = function allz (buf) {
+exports.allz = function allz(buf) {
   if (buf.byteLength % 16 !== 0) {
     throw new Error('Buffer length must be a multiple of 16')
   }
@@ -93,21 +93,17 @@ exports.allz = function allz (buf) {
   return true
 }
 
-exports.and = binary(
-  (a, b, result) => {
-    for (let i = 0, n = result.length; i < n; i++) {
-      result[i] = a[i] & b[i]
-    }
+exports.and = binary((a, b, result) => {
+  for (let i = 0, n = result.length; i < n; i++) {
+    result[i] = a[i] & b[i]
   }
-)
+})
 
-exports.clear = binary(
-  (a, b, result) => {
-    for (let i = 0, n = result.length; i < n; i++) {
-      result[i] = a[i] & ~b[i]
-    }
+exports.clear = binary((a, b, result) => {
+  for (let i = 0, n = result.length; i < n; i++) {
+    result[i] = a[i] & ~b[i]
   }
-)
+})
 
 exports.clo = unary(
   (buf, result) => {
@@ -199,38 +195,30 @@ exports.ctz = unary(
   }
 )
 
-exports.not = unary(
-  (buf, result) => {
-    for (let i = 0, n = buf.length; i < n; i++) {
-      result[i] = ~buf[i]
-    }
+exports.not = unary((buf, result) => {
+  for (let i = 0, n = buf.length; i < n; i++) {
+    result[i] = ~buf[i]
   }
-)
+})
 
-exports.or = binary(
-  (a, b, result) => {
-    for (let i = 0, n = result.length; i < n; i++) {
-      result[i] = a[i] | b[i]
-    }
+exports.or = binary((a, b, result) => {
+  for (let i = 0, n = result.length; i < n; i++) {
+    result[i] = a[i] | b[i]
   }
-)
+})
 
-exports.sum = reduce(
-  (buf) => {
-    let result = 0n
+exports.sum = reduce((buf) => {
+  let result = 0n
 
-    for (let i = 0, n = buf.length; i < n; i++) {
-      result += BigInt(buf[i])
-    }
-
-    return result
+  for (let i = 0, n = buf.length; i < n; i++) {
+    result += BigInt(buf[i])
   }
-)
 
-exports.xor = binary(
-  (a, b, result) => {
-    for (let i = 0, n = result.length; i < n; i++) {
-      result[i] = a[i] ^ b[i]
-    }
+  return result
+})
+
+exports.xor = binary((a, b, result) => {
+  for (let i = 0, n = result.length; i < n; i++) {
+    result[i] = a[i] ^ b[i]
   }
-)
+})
